@@ -9,11 +9,20 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>C# bindings for https://github.com/zeux/meshoptimizer</Description>
     <PackageTags>c#; bindings; meshoptimizer;</PackageTags>
+    <PackageProjectUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</RepositoryUrl>
+    <Authors>BoyBaykiller</Authors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="res/natives/win-x64/Release/">
+    <Content Include="res/natives/win-x64/Release/meshoptimizer.dll">
       <PackagePath>runtimes/win-x64/native</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+
+    <Content Include="res/natives/linux-x64/Release/meshoptimizer.so">
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
       <Pack>true</Pack>
     </Content>
   </ItemGroup>

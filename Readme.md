@@ -4,3 +4,5 @@ C# bindings for [meshoptimizer](https://github.com/zeux/niagara/tree/5c4da32850a
 
 Available as NuGet package under [Meshoptimizer.NET](https://www.nuget.org/packages/Meshoptimizer.NET/1.0.0).
 
+
+If you are missing a function feel free to create an issue and I'll add it.
