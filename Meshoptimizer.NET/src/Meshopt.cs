@@ -17,6 +17,10 @@ namespace Meshoptimizer
             public uint TriangleCount;
         };
 
+        /// <summary>
+        /// Vertex attribute stream<para/>
+        /// Each element takes size bytes, beginning at data, with stride controlling the spacing between successive elements (stride >= size).
+        /// </summary>
         public struct Stream
         {
             public void* Data;
@@ -32,33 +36,33 @@ namespace Meshoptimizer
         /// When using buildMeshletsScan, for maximum efficiency the index buffer being converted has to be optimized for vertex cache first.
         /// </summary>
         /// <param name="meshlets">Must contain enough space for all meshlets, worst case size can be computed with <seealso cref="BuildMeshletsBound(nuint, nuint, nuint)"/></param>
-        /// <param name="meshletVertices">Must contain enough space for all meshlets, worst case size is equal to max_meshlets * max_vertices</param>
-        /// <param name="meshletTriangles">Must contain enough space for all meshlets, worst case size is equal to max_meshlets * max_triangles * 3</param>
+        /// <param name="meshlet_vertices">Must contain enough space for all meshlets, worst case size is equal to max_meshlets * max_vertices</param>
+        /// <param name="meshlet_triangles">Must contain enough space for all meshlets, worst case size is equal to max_meshlets * max_triangles * 3</param>
         /// <param name="indices"></param>
-        /// <param name="indexCount"></param>
-        /// <param name="vertexPositions">Should have float3 position in the first 12 bytes of each vertex</param>
-        /// <param name="vertexCount"></param>
-        /// <param name="vertexPositionsStride"></param>
-        /// <param name="maxVertices">Must not exceed implementation limits of 255</param>
-        /// <param name="maxTriangles">Must not exceed implementation limits of 512</param>
-        /// <param name="coneWeight">Should be set to 0 when cone culling is not used, and a value between 0 and 1 otherwise to balance between cluster size and cone culling efficiency</param>
+        /// <param name="index_count"></param>
+        /// <param name="vertex_positions">Should have float3 position in the first 12 bytes of each vertex</param>
+        /// <param name="vertex_count"></param>
+        /// <param name="vertex_positions_stride"></param>
+        /// <param name="max_vertices">Must not exceed implementation limits of 255</param>
+        /// <param name="max_triangles">Must not exceed implementation limits of 512</param>
+        /// <param name="cone_weight">Should be set to 0 when cone culling is not used, and a value between 0 and 1 otherwise to balance between cluster size and cone culling efficiency</param>
         /// <returns></returns>
         [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_buildMeshlets")]
         public static partial nuint BuildMeshlets(ref Meshlet meshlets,
-            in uint meshletVertices,
-            in byte meshletTriangles,
+            in uint meshlet_vertices,
+            in byte meshlet_triangles,
             in uint indices,
-            nuint indexCount,
-            in float vertexPositions,
-            nuint vertexCount,
-            nuint vertexPositionsStride,
-            nuint maxVertices,
-            nuint maxTriangles,
-            float coneWeight);
+            nuint index_count,
+            in float vertex_positions,
+            nuint vertex_count,
+            nuint vertex_positions_stride,
+            nuint max_vertices,
+            nuint max_triangles,
+            float cone_weight);
 
         /// <inheritdoc cref="BuildMeshlets(ref Meshlet, in uint, in byte, in uint, nuint, in float, nuint, nuint, nuint, nuint, float)"/>
         [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_buildMeshletsBound")]
-        public static partial nuint BuildMeshletsBound(nuint indexCount, nuint maxVertices, nuint maxTriangles);
+        public static partial nuint BuildMeshletsBound(nuint index_count, nuint max_vertices, nuint max_triangles);
 
         /// <summary>
         /// Generates a vertex remap table from multiple vertex streams and an optional index buffer and returns number of unique vertices.<para/>
