@@ -65,6 +65,17 @@ namespace Meshoptimizer
         public static partial nuint BuildMeshletsBound(nuint index_count, nuint max_vertices, nuint max_triangles);
 
         /// <summary>
+        /// Experimental: Meshlet optimizer<para/>
+        /// Reorders meshlet vertices and triangles to maximize locality to improve rasterizer throughput
+        /// </summary>
+        /// <param name="meshletVertices">must refer to meshlet index data; when buildMeshlets* is used, needs to be computed from meshlet's vertex_offset</param>
+        /// <param name="meshletTriangles">must refer to meshlet triangle data; when buildMeshlets* is used, needs to be computed from meshlet's triangle_offset</param>
+        /// <param name="triangleCount">must not exceed implementation limits (vertex_count &lt;= 255 - not 256!, triangle_count &lt;= 512)</param>
+        /// <param name="vertexCount">must not exceed implementation limits (vertex_count &lt;= 255 - not 256!, triangle_count &lt;= 512)</param>
+        [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_optimizeMeshlet")]
+        public static partial void OptimizeMeshlet(ref uint meshletVertices, ref byte meshletTriangles, nuint triangleCount, nuint vertexCount);
+
+        /// <summary>
         /// Generates a vertex remap table from multiple vertex streams and an optional index buffer and returns number of unique vertices.<para/>
         /// As a result, all vertices that are binary equivalent map to the same(new) location, with no gaps in the resulting sequence.
         /// Resulting remap table maps old vertices to new vertices and can be used in <seealso cref="RemapIndexBuffer(ref uint, in uint, nuint, in uint)"/>/<seealso cref="RemapVertexBuffer(void*, void*, nuint, nuint, in uint)"/>.
@@ -76,7 +87,7 @@ namespace Meshoptimizer
         /// <param name="index_count"></param>
         /// <param name="vertex_count"></param>
         /// <param name="streams"></param>
-        /// <param name="stream_count">Must be <= 16</param>
+        /// <param name="stream_count">Must be &lt;= 16</param>
         /// <returns></returns>
         [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_generateVertexRemapMulti")]
         public static partial nuint GenerateVertexRemapMulti(ref uint destination, in uint indices, nuint index_count, nuint vertex_count, in Stream streams, nuint stream_count);
