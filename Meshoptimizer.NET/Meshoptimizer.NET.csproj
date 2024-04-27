@@ -1,31 +1,40 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Platforms>AnyCPU;x64</Platforms>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Description>C# bindings for https://github.com/zeux/meshoptimizer</Description>
-    <PackageTags>c#; bindings; meshoptimizer;</PackageTags>
-    <PackageProjectUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</RepositoryUrl>
-    <Authors>BoyBaykiller</Authors>
-    <Version>1.0.4</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Platforms>AnyCPU;x64</Platforms>
+		<RootNamespace>Meshoptimizer</RootNamespace>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageOutputPath>..\nuget</PackageOutputPath>
+		<PackageReadmeFile>Readme.md</PackageReadmeFile>
+		<PackageIcon>logo.png</PackageIcon>
+		<Description>C# bindings for https://github.com/zeux/meshoptimizer</Description>
+		<PackageTags>c#; bindings; meshoptimizer;</PackageTags>
+		<PackageProjectUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</RepositoryUrl>
+		<Authors>BoyBaykiller</Authors>
+		<Version>1.0.4</Version>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="..\logo.png" Pack="true" PackagePath="\" />
+		<None Include="..\Readme.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="res/natives/win-x64/Release/meshoptimizer.dll">
-      <PackagePath>runtimes/win-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>
+	<ItemGroup>
+		<Content Include="res/natives/win-x64/Release/meshoptimizer.dll">
+			<PackagePath>runtimes/win-x64/native</PackagePath>
+			<Pack>true</Pack>
+		</Content>
 
-    <Content Include="res/natives/linux-x64/Release/libmeshoptimizer.so">
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
-      <Pack>true</Pack>
-    </Content>
-  </ItemGroup>
-
+		<Content Include="res/natives/linux-x64/Release/libmeshoptimizer.so">
+			<PackagePath>runtimes/linux-x64/native</PackagePath>
+			<Pack>true</Pack>
+		</Content>
+	</ItemGroup>
+	
 </Project>
