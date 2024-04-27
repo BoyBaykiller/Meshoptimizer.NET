@@ -207,7 +207,6 @@ public static unsafe partial class Meshopt
     /// </summary>
     /// <param name="destination"></param>
     /// <param name="indices"></param>
-    /// <param name="index_count"></param>
     /// <param name="vertex_count"></param>
     public static void OptimizeVertexCacheStrip(Span<uint> destination, ReadOnlySpan<uint> indices, int vertex_count)
     {
@@ -516,37 +515,37 @@ public static unsafe partial class Meshopt
     }
 
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     public static int SimplifyWithAttributes(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, in float vertex_attributes, int vertex_attributes_stride, in float attribute_weights, int attribute_count, ReadOnlySpan<byte> vertex_lock, int target_index_count, float target_error, uint options, out float result_error)
     {
         return (int)SimplifyWithAttributes(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, vertex_attributes, (nuint)vertex_attributes_stride, attribute_weights, (nuint)attribute_count, vertex_lock[0], (nuint)target_index_count, target_error, options, out  result_error);
     }
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     public static int SimplifyWithAttributes(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, in float vertex_attributes, int vertex_attributes_stride, in float attribute_weights, int attribute_count, int target_index_count, float target_error, uint options, out float result_error)
     {
         return (int)SimplifyWithAttributes(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, vertex_attributes, (nuint)vertex_attributes_stride, attribute_weights, (nuint)attribute_count, IntPtr.Zero, (nuint)target_index_count, target_error, options, out result_error);
     }
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     public static int SimplifyWithAttributes(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, in float vertex_attributes, int vertex_attributes_stride, in float attribute_weights, int attribute_count, ReadOnlySpan<byte> vertex_lock, int target_index_count, float target_error, uint options)
     {
         return (int)SimplifyWithAttributes(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, vertex_attributes, (nuint)vertex_attributes_stride, attribute_weights, (nuint)attribute_count, vertex_lock[0], (nuint)target_index_count, target_error, options, IntPtr.Zero);
     }
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     public static int SimplifyWithAttributes(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, in float vertex_attributes, int vertex_attributes_stride, in float attribute_weights, int attribute_count, int target_index_count, float target_error, uint options)
     {
         return (int)SimplifyWithAttributes(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, vertex_attributes, (nuint)vertex_attributes_stride, attribute_weights, (nuint)attribute_count, IntPtr.Zero, (nuint)target_index_count, target_error, options, IntPtr.Zero);
     }
 
-    /// <inheritdoc cref="SimplifySloppy(Span{uint}, ReadOnlySpan{uint}, in float, int, int, int, float, ref float)"/>
+    /// <inheritdoc cref="SimplifySloppy(Span{uint}, ReadOnlySpan{uint}, in float, int, int, int, float, out float)"/>
     public static int SimplifySloppy(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, int target_index_count, float target_error, out float result_error)
     {
         return (int)SimplifySloppy(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, (nuint)target_index_count, target_error, out result_error);
     }
 
-    /// <inheritdoc cref="SimplifySloppy(Span{uint}, ReadOnlySpan{uint}, in float, int, int, int, float, ref float)"/>
+    /// <inheritdoc cref="SimplifySloppy(Span{uint}, ReadOnlySpan{uint}, in float, int, int, int, float, out float)"/>
     public static int SimplifySloppy(Span<uint> destination, ReadOnlySpan<uint> indices, in float vertex_positions, int vertex_count, int vertex_positions_stride, int target_index_count, float target_error)
     {
         return (int)SimplifySloppy(ref destination[0], indices[0], (nuint)indices.Length, vertex_positions, (nuint)vertex_count, (nuint)vertex_positions_stride, (nuint)target_index_count, target_error, IntPtr.Zero);

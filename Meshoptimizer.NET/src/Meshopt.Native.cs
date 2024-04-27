@@ -468,13 +468,13 @@ public static unsafe partial class Meshopt
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplify")]
     public static partial nuint Simplify(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, nuint target_index_count, float target_error, uint options, out float result_error);
 
-    /// <inheritdoc cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, out float)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplify")]
     public static partial nuint Simplify(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, nuint target_index_count, float target_error, uint options, IntPtr result_error);
 
     /// <summary>
     /// Experimental: Mesh simplifier with attribute metric.<para/>
-    /// The algorithm ehnahces meshopt_simplify by incorporating attribute values into the error metric used to prioritize simplification order; <see cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, ref float?)"/>  documentation for details.
+    /// The algorithm ehnahces meshopt_simplify by incorporating attribute values into the error metric used to prioritize simplification order; <see cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, out float)"/>  documentation for details.
     /// Note that the number of attributes affects memory requirements and running time; this algorithm requires ~1.5x more memory and time compared to meshopt_simplify when using 4 scalar attributes.
     /// </summary>
     /// <remarks>
@@ -500,15 +500,15 @@ public static unsafe partial class Meshopt
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyWithAttributes")]
     public static partial nuint SimplifyWithAttributes(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in float vertex_attributes, nuint vertex_attributes_stride, in float attribute_weights, nuint attribute_count, in byte vertex_lock, nuint target_index_count, float target_error, uint options, out float result_error);
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyWithAttributes")]
     public static partial nuint SimplifyWithAttributes(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in float vertex_attributes, nuint vertex_attributes_stride, in float attribute_weights, nuint attribute_count, in IntPtr vertex_lock, nuint target_index_count, float target_error, uint options, IntPtr result_error);
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyWithAttributes")]
     public static partial nuint SimplifyWithAttributes(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in float vertex_attributes, nuint vertex_attributes_stride, in float attribute_weights, nuint attribute_count, in byte vertex_lock, nuint target_index_count, float target_error, uint options, IntPtr result_error);
 
-    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, ref float)"/>
+    /// <inheritdoc cref="SimplifyWithAttributes(ref uint, in uint, nuint, in float, nuint, nuint, in float, nuint, in float, nuint, in byte, nuint, float, uint, out float)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyWithAttributes")]
     public static partial nuint SimplifyWithAttributes(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in float vertex_attributes, nuint vertex_attributes_stride, in float attribute_weights, nuint attribute_count, in IntPtr vertex_lock, nuint target_index_count, float target_error, uint options, out float result_error);
 
@@ -532,7 +532,7 @@ public static unsafe partial class Meshopt
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifySloppy")]
     public static partial nuint SimplifySloppy(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, nuint target_index_count, float target_error, out float result_error);
 
-    /// <inheritdoc cref="SimplifySloppy(ref uint, in int, nuint, in float, nuint, nuint, nuint, float, ref float)"/>
+    /// <inheritdoc cref="SimplifySloppy(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, nint)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifySloppy")]
     public static partial nuint SimplifySloppy(ref uint destination, in uint indices, nuint index_count, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, nuint target_index_count, float target_error, IntPtr result_error);
 
@@ -555,13 +555,13 @@ public static unsafe partial class Meshopt
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyPoints")]
     public static partial nuint SimplifyPoints(ref uint destination, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in float vertex_colors, nuint vertex_colors_stride, float color_weight, nuint target_vertex_count);
 
-    /// <inheritdoc cref="SimplifyPoints(ref int, in float, nuint, nuint, in float, nuint, float, nuint)"/>/>
+    /// <inheritdoc cref="SimplifyPoints(ref uint, in float, nuint, nuint, in float, nuint, float, nuint)"/>
     [LibraryImport(LIBRARY_NAME, EntryPoint = "meshopt_simplifyPoints")]
     public static partial nuint SimplifyPoints(ref uint destination, in float vertex_positions, nuint vertex_count, nuint vertex_positions_stride, in IntPtr vertex_colors, nuint vertex_colors_stride, float color_weight, nuint target_vertex_count);
 
     /// <summary>
-    /// Absolute error must be <c>divided</c> by the scaling factor before passing it to <seealso cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, ref float?)"/> as <c>target_error</c>.
-    /// Relative error returned by <seealso cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, ref float?)"/> via result_error must be <c>multiplied</c> by the scaling factor to get absolute error.
+    /// Absolute error must be <c>divided</c> by the scaling factor before passing it to <seealso cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, out float)"/> as <c>target_error</c>.
+    /// Relative error returned by <seealso cref="Simplify(ref uint, in uint, nuint, in float, nuint, nuint, nuint, float, uint, out float)"/> via result_error must be <c>multiplied</c> by the scaling factor to get absolute error.
     /// </summary>
     /// <param name="vertex_positions"></param>
     /// <param name="vertex_count"></param>
