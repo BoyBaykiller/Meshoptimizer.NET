@@ -13,18 +13,16 @@
     <PackageProjectUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BoyBaykiller/Meshoptimizer.NET</RepositoryUrl>
     <Authors>BoyBaykiller</Authors>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="res/natives/win-x64/Release/meshoptimizer.dll">
       <PackagePath>runtimes/win-x64/native</PackagePath>
-      <Pack>true</Pack>
     </Content>
 
     <Content Include="res/natives/linux-x64/Release/libmeshoptimizer.so">
       <PackagePath>runtimes/linux-x64/native</PackagePath>
-      <Pack>true</Pack>
     </Content>
   </ItemGroup>
 
