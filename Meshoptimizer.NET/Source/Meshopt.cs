@@ -72,7 +72,7 @@ namespace Meshoptimizer
         public static partial nuint BuildMeshletsBound(nuint indexCount, nuint maxVertices, nuint maxTriangles);
 
         /// <summary>
-        /// Experimental: Meshlet optimizer<para/>
+        /// Meshlet optimizer<para/>
         /// Reorders meshlet vertices and triangles to maximize locality to improve rasterizer throughput
         /// </summary>
         /// <param name="meshletVertices">Must refer to meshlet index data; when buildMeshlets* is used, needs to be computed from meshlet's vertex_offset</param>
